@@ -12,7 +12,7 @@ const DELETE = ({ onMessage }) => {
     // Maneja el botón para obtener todos los elementos
     const handleBtnDelAll = async () => {
         try {
-            const response = await fetch('http://localhost:4000/ejemplo/all', {
+            const response = await fetch('https://comedores-la-plata.onrender.com:4000/ejemplo/all', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
