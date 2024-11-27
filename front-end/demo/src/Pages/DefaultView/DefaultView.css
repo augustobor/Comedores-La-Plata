@@ -1,0 +1,14 @@
+.defaultView {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.defaultViewComponent {
+    border-radius: 15px;   /* Bordes redondeados */
+    padding: 20px;         /* Espaciado interno (padding) */
+    margin: 20px;          /* Espaciado externo (margin) */
+    border: 1px solid #ccc; /* Opcional: borde alrededor del div */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar un efecto elevado */
+    background-color: #f9f9f9; /* Opcional: color de fondo */
+}

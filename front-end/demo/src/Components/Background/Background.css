@@ -1,0 +1,28 @@
+/* src/Background.css */
+.background-container {
+    /* background-image: url(/src/assets/ayuda-social.png); */
+    background-size: cover; /* Cubre todo el espacio */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    /* height: 100vh; */
+    height: 100%; /* o auto*/
+    width: 100%; /* Hace que cubra todo el ancho de la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra el contenido */
+    position: relative;
+    color: var(--color-blanco); /* Texto blanco por defecto */
+    z-index: 1; /* Asegura que el texto esté por encima del fondo */
+  }
+  
+  .background-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--color-negro-rgb), 0.5); /* Capa semi-transparente */
+    z-index: -1; /* Coloca el fondo detrás del contenido */
+  }
+  

@@ -1,0 +1,33 @@
+/* .pr-container {
+  font-family: Georgia, serif;
+  /* background-color: var(--color-blanco); 
+  color: var(--color-gris-oscuro);
+} */
+
+.pr-hero {
+  background-color: rgba(var(--color-beige-rgb), 0.8);
+  padding: 50px 20px;
+  text-align: center;
+  margin: 2%;
+  border: var(--color-marron) solid 1px; /* Borde marrón */
+  font-family: 'Georgia', serif;
+}
+
+.pr-hero-h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: var(--color-negro);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pr-p {
+  font-size: 1.2em;
+  color: var(--color-gris-oscuro); /* Gris oscuro */
+  font-family: 'Roboto', sans-serif;
+  text-align: left; /* Alinea el texto a la izquierda */
+  margin-left: 0; /* Asegura que no haya márgenes que lo centren */
+  padding-left: 0; /* Elimina cualquier padding que lo pudiera centrar */
+}
+
+
+

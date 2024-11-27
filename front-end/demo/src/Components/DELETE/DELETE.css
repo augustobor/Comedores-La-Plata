@@ -1,0 +1,4 @@
+.botones {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+}

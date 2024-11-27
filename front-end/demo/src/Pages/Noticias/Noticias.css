@@ -1,0 +1,276 @@
+.noticias-wrapper {
+  /* background: linear-gradient(to right, #E6A503, #FAD958); */
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+}
+
+.contenedor-de-todas-las-noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 15px;
+  justify-content: flex-start; /* Alinear contenido en la parte superior */
+  align-items: flex-start; /* Cambiar a flex-start para alinear a la izquierda */
+  padding: 15px 0;
+  /*margin-left: 20px; /* Ajusta el valor según sea necesario para espacio */
+}
+
+/*--------------------------------------------------------------------------------------------*/
+
+/* CSS DE LA FECHA DE LA NOTICIA */
+.noticia-fecha {
+  font-size: 14px;
+  color: #1C1C1C;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.noticia-container:hover {
+  transform: scale(1.01);
+}
+
+.no-news-msg {
+  text-align: center;  /* Centra el texto horizontalmente */
+  color: var(--color-beige);
+  margin-top: 20px;
+}
+
+
+
+/*--------------------------------------------------------------------------------------------*/
+
+/* PAGINACION TODO EL CSS */
+.paginacion {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Centra los botones verticalmente */
+  /* position: fixed; */
+  padding-bottom: 10px;
+  background-color: transparent;
+  /* bottom: 0; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* margin-top: 20px; */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.paginacion button {
+  background-color: #E6A503; /* Naranja claro */
+  border: none;
+  color: var(--color-negro); /* Texto blanco */
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.paginacion button:hover {
+  background-color: #FAD958; /* Amarillo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo cuando el botón está deshabilitado */
+.paginacion button:disabled {
+  background-color: var(--color-beige); /* Beige */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Estilo del texto de la paginación */
+.paginacion span {
+  font-size: 16px;
+  color: var(--color-amarillo);
+  margin: 0 10px;
+}
+
+/*--------------------------------------------------------------------------------------------*/
+
+.titulo-especial {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: black;
+  margin-bottom: 20px; /* Espacio entre el título y las noticias */
+  margin-top: 20px;
+  text-align: center;
+}
+
+.noticia-container {
+  background-color: var(--color-beige);
+  border-radius: 10px;
+  padding: 15px;
+  /* margin: 10px 0; */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease; /* Añade una transición suave */
+}
+
+.noticia-info {
+  flex: 1;
+  padding-left: 15px;
+}
+
+.noticia-titulo {
+  font-size: 1.7rem;
+  color: black;
+  cursor: pointer;
+  margin: 0; 
+}
+
+.noticia-subtitulo {
+  font-size: 1.2rem;
+  color: var(--color-gris-oscuro);
+  margin: 5px 0;
+}
+
+.noticia-contenido {
+  font-size: 1rem;
+  color: black;
+  overflow-wrap: break-word; /* Rompe las palabras largas */
+  word-break: break-word; /* Fuerza el corte de palabras si es necesario */
+  white-space: pre-line; /* Permite que el texto se ajuste en múltiples líneas */
+}
+
+/* Estilo para el botón de Leer Mas */
+.boton-leer-mas {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #FAD958;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.carrusel {
+  position: relative;
+  flex: 0 0 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Cambia a flex-start para alinear a la izquierda */
+  /* margin-bottom: 10px; */
+}
+
+.carrusel-boton {
+  background-color: rgba(255, 255, 255, 0.8); /* Botones más visibles */
+  border: none;
+  color: black;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: background 0.3s;
+}
+
+.carrusel-boton:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.noticia-imagen {
+  max-height: 150px;
+  /* width: 100%; */
+  width: auto;
+  max-width: 400px;
+  padding: 10px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: max-height 0.3s ease; /* Transición suave para max-height */
+}
+
+.noticia-imagen.active {
+  max-height: 300px; /* Establece la altura máxima cuando está activa */
+}
+
+
+/* Estilo para el botón de nueva noticia */
+.boton-anadir-noticias {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #E6A503, #FAD958);
+  border-radius: 10px;
+  margin-left: 20px;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  height: 40px;
+  text-decoration: none;
+  margin-bottom: 20px; /* Espacio debajo del botón */
+  border: 1px solid black;
+}
+
+/* agregado a center boton*/
+
+.add-center-btn.nueva-noticia-btn {
+  margin-bottom: 20px;
+}
+
+.add-center-btn.noticia-btn {
+  float: right;
+}
+
+.noticia-container-btn-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/**/
+
+.boton-eliminar-noticias {
+  padding: 8px 16px;
+  background: linear-gradient(to right, #E6A503, #FAD958);
+  border-radius: 10px;
+  color: black;
+  font-size: 0.9rem;
+  cursor: pointer;
+  height: 35px;
+  text-decoration: none;
+  border: 1.5px solid black;
+  float: right; /* Para alinear a la derecha */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.boton-eliminar-noticias:hover {
+  /*transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}
+
+.border-urgente {
+  border: 1px solid red; /* Borde rojo */
+}
+
+.border-importante {
+  border: 1px solid green; /* Borde celeste */
+}
+
+
+/*--------------------------------------------------------------------------------------------*/
+
+/* Ajustes para pantallas pequeñas */
+@media screen and (max-width: 992px) {
+
+  .noticia-titulo {
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+  }
+
+  .noticia-subtitulo {
+    font-size: 1.2rem; /* Tamaño de fuente más pequeño */
+  }
+
+  .noticia-contenido {
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+  }
+
+}

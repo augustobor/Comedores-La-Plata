@@ -1,0 +1,77 @@
+/* FormCASPOST.css */
+
+.formularioCASPOSTADMIN {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+}
+
+.centro-details-div {
+    margin-bottom: 16px;
+    margin-top: 8px;
+}
+
+.centro-details-error-1 {
+    font-size: 0.9rem;
+    color: var(--color-rojo);
+    padding-left: 1px;
+    padding-top: 1px;
+}
+
+.centro-details-info-1 {
+    font-size: 0.9rem;
+    color: var(--color-gris-suave);
+    padding-left: 1px;
+    padding-top: 1px;
+}
+
+.formularioCASPOSTADMINWrapper {
+    background-color: var(--color-beige);
+    border-radius: 5px;
+    padding: 20px; /* Más espacio alrededor del formulario */
+}
+
+.cpfp-h3 {
+    text-align: center;
+    color: var(--color-marron);
+    margin: 0 auto; /* Ajusta el margen para centrarlo, si es necesario */
+}
+
+.formularioCASPOSTADMIN label {
+    display: block; /* Etiquetas en bloque para alineación */
+    font-weight: bold;
+}
+
+.formularioCASPOSTADMIN input, .formularioCASPOSTADMIN select {
+    border: 1px solid var(--color-marron); /* Borde marrón */
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px; /* Más espacio interno */
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s ease-in-out; /* Efecto de transición */
+    box-sizing: border-box; /* Incluir padding en el ancho */
+    /* margin-bottom: 10px; */
+}
+
+.custom-option-style {
+}
+
+.formularioCASPOSTADMIN textarea {
+    border: 1px solid var(--color-marron); /* Borde marrón */
+    width: 100%;
+    padding: 10px; /* Más espacio interno */
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s ease-in-out; /* Efecto de transición */
+    box-sizing: border-box; /* Incluir padding en el ancho */
+    /* margin-bottom: 10px; */
+    height: 200px;
+}
+
+.formularioCASPOSTADMIN input:focus,
+.formularioCASPOSTADMIN textarea:focus {
+    border-color: #007bff; /* Color azul para foco */
+    outline: none; /* Sin borde adicional */
+}

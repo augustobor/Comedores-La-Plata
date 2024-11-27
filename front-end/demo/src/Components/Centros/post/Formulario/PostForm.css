@@ -1,0 +1,94 @@
+.fondito-centro-post-form {
+    background: linear-gradient(135deg, #FAD958, #E6A503, #9B4E00); /* Gradiente del amarillo al marrón */
+    width: 100%;
+    min-height: 100vh; /* Asegura que cubra al menos toda la altura de la pantalla */
+    margin: 0;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    overflow: hidden;
+}
+  
+.CentroPostFormContainer {
+    min-width: 768px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form_part {
+    width: 100%;
+    transition: opacity 0.5s ease; /* Transición suave */
+}
+
+.part_1 {
+    max-width: 900px;
+}
+
+.part_2 {
+    max-width: 800px;
+    min-width: 800px;
+}
+
+.part_3 {
+    max-width: 1000px;
+
+}
+
+.fade-in {
+    opacity: 1; /* Completamente visible */
+}
+
+.fade-out {
+    opacity: 0; /* Completamente invisible */
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.login-buttons {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--color-negro); /* Texto en negro */
+  font-weight: bold;
+}
+
+.login-buttons:hover {
+  opacity: 0.9;
+}
+
+.login-button {
+  background-color: var(--color-amarillo); /* Botón de Ingresar en amarillo */
+}
+
+.cancel-button {
+  background-color: var(--color-naranja); /* Botón de Cancelar en naranja */
+}
+
+/* .button-GMap-Admin {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4A4A4A;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+} */
+
+/* button:hover {
+    background-color: #333333;
+} */
+
+button:disabled {
+    background-color: #cccccc; /* Un gris más claro para el estado deshabilitado */
+    cursor: not-allowed; /* Cambia el cursor para mostrar que no es interactuable */
+    opacity: 0.6; /* Baja la opacidad para un efecto visual de deshabilitado */
+}

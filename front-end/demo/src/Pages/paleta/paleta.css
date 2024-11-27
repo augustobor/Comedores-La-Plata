@@ -1,0 +1,19 @@
+.paleta-container {
+    padding: 20px;
+  }
+  
+  .color-row {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .color-column {
+    flex: 1;
+    height: 150px; /* Ajusta el tamaño según prefieras */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000; /* Puedes cambiar o eliminar el borde */
+    color: white;
+    text-transform: capitalize;
+  }

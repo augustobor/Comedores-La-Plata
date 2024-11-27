@@ -1,0 +1,80 @@
+.footer {
+  background: linear-gradient(to right, var(--color-beige), var(--color-amarillo)); /* Degradado beige a amarillo */
+  color: var(--color-negro); /* Texto negro */
+  padding: 10px;
+  width: 100%;
+  min-height: 60px;
+  max-height: 60px;
+  text-align: center;
+}
+
+.footer .footer-text {
+  font-weight: bold; /* Aplica un grosor más grueso al texto */
+  font-size: 1 rem; /* Tamaño de fuente ligeramente más grande */
+  /* margin: 5px 0; */
+}
+
+.linkedin-link,
+.github-link {
+  margin-left: 10px;
+  color: #0077B5; /* Color típico de LinkedIn */
+  text-decoration: none;
+}
+
+.linkedin-icon {
+  font-size: 1.5rem; /* Ajusta el tamaño según lo que necesites */
+  vertical-align: middle;
+}
+
+.icon {
+  font-size: 1.5rem; /* Ajusta el tamaño según lo que necesites */
+  vertical-align: middle;
+}
+
+.linkedin-link:hover {
+  color: #005582; /* Color más oscuro para el hover */
+}
+
+.github-link:hover {
+  color: #000; /* Color más oscuro para el hover de GitHub */
+}
+
+.github-link {
+  color: #333; /* Color típico de GitHub */
+}
+
+.developer {
+  margin-left: 10px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+  .footer {
+    padding: 15px; /* Un poco más de padding para pantallas pequeñas */
+    text-align: center;
+    min-height: auto; /* Ajusta la altura si es necesario */
+    max-height: none; /* Permite que el contenido se ajuste según sea necesario */
+    background: linear-gradient(to right, var(--color-beige), var(--color-amarillo)); /* Mantén el degradado */
+  }
+
+  .footer .footer-text {
+    font-size: 0.9rem; /* Tamaño de fuente ligeramente más pequeño */
+  }
+
+  .linkedin-link,
+  .github-link {
+    margin-left: 5px; /* Reduce el margen entre íconos */
+  }
+
+  .linkedin-icon,
+  .icon {
+    font-size: 1.2rem; /* Ajusta el tamaño de los íconos */
+  }
+
+  .developer {
+    display: block; /* Muestra los nombres de los desarrolladores en bloques separados */
+    margin: 5px 0; /* Agrega un margen para separación */
+  }
+}

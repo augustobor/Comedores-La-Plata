@@ -1,0 +1,104 @@
+.mdc-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100%);
+    max-width: 600px;
+    gap: 10px;
+}
+
+.search-left {
+    display: flex;
+    flex: 1;
+    gap: 0;
+}
+
+.searchbox {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    font-size: 1rem;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.search-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    background: linear-gradient(to right, var(--color-naranja), var(--color-naranja-oscuro));
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    height: 40px;
+    transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+    background: linear-gradient(to right, var(--color-naranja), var(--color-naranja));
+}
+
+.add-center-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px; /* Bordes completamente redondeados */
+    background: linear-gradient(to right, var(--color-naranja), var(--color-naranja-oscuro));
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    height: 40px;
+    transition: background 0.3s ease;
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+.add-center-btn:hover {
+    background: linear-gradient(to right, var(--color-naranja), var(--color-naranja));
+}
+
+.mapa-container {
+    height: 500px;
+    width: calc(99%);
+    overflow: hidden;
+    /* border-radius: 10px; */
+}
+  
+@media screen and (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+
+    .search-left {
+        width: 100%;
+    }
+
+    .add-center-btn {
+        width: 100%;
+    }
+
+    .mapa-container {
+        height: 80dvh;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .mdc-container {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        bottom: 0;
+    }
+}
+  

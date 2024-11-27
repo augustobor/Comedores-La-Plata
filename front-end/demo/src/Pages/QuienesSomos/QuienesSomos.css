@@ -1,0 +1,38 @@
+.qs-container {
+  background-color: rgba(var(--color-beige-rgb), 0.8);
+  padding: 40px;
+  margin: 2%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.qs-titulo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  color: var(--color-negro);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.qs-descripcion {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-gris-oscuro);
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+@media screen and (max-width: 992px) {
+  .qs-container {
+    padding: 20px;
+  }
+
+  .qs-titulo {
+    font-size: 28px;
+  }
+
+  .qs-descripcion {
+    font-size: 16px;
+  }
+}

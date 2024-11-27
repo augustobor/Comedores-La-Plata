@@ -1,0 +1,41 @@
+/* FormCASPOST.css */
+
+.formularioCASPOSTADMIN {
+    border-radius: 8px; /* Bordes redondeados */
+    max-width: 80%; /* Ancho máximo */
+    margin: 0 auto; /* Centrar el formulario */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    font-family: 'Arial', sans-serif; /* Fuente legible */
+    /* height: 100vh; */
+    height: 100%;
+}
+
+.formularioCASPOSTADMINWrapper {
+    background-color: var(--color-beige);
+    padding: 20px; /* Más espacio alrededor del formulario */
+}
+
+.formularioCASPOSTADMIN h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px; /* Separación del título */
+    text-align: center; /* Centrado */
+}
+
+.GMapContainer {
+    height: 300px;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 0px;
+    margin: 5px 0;
+}
+
+.centro-form-dir-seleccionada {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    color: var(--color-negro);
+    background-color: rgba(var(--color-negro-rgb), 0.1); /* Capa semi-transparente */
+    border-radius: 5px;
+}

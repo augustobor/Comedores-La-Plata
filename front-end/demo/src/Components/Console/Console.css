@@ -1,0 +1,21 @@
+.console {
+    display: flex;
+    /* justify-content: center; */
+    width: 90%;
+    height: 50vh;
+    background-color: black;
+    border: 3px solid gray; /* Opcional: borde alrededor del div */
+    color: greenyellow;
+}
+
+.console {
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    white-space: pre-wrap; /* Mantiene los saltos de línea */
+}
+
+.text {
+    font-family: monospace; /* Opcional: le da un estilo de consola */
+    font-size: 14px;
+    line-height: 1.5;
+    margin-left: 20px;
+}

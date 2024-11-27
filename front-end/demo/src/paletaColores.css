@@ -1,0 +1,39 @@
+:root {
+  --color-blanco: #FAFAFA;
+  --color-negro: #1C1C1C;
+
+  --color-amarillo: #FAD958;
+  --color-beige: #E5D3A5;
+  --color-naranja: #E6A503;
+  --color-naranja-oscuro: #D48806;
+  --color-marron: #9B4E00;
+
+  --color-gris-oscuro: #34495e;
+  --color-gris-suave: #7F8C8D;
+
+  --color-rojo-a: #fc1c1c;
+  --color-verde-a: #4CAF50;
+
+  --color-rojo: #FF0000; /* Color para 'Peligro' */
+  --color-azul: #0000FF; /* Color para 'Medio' */
+  --color-verde: #008000; /* Color para 'Tranquilo' */
+
+  --color-blanco-rgb: 250, 250, 250;
+  --color-negro-rgb: 28, 28, 28;
+
+  --color-amarillo-rgb: 250, 217, 88;
+  --color-beige-rgb: 229, 211, 165;
+  --color-naranja-rgb: 230, 165, 3;
+  --color-marron-rgb: 155, 78, 0;
+
+  --color-gris-oscuro-rgb: 52, 73, 94;
+
+  --color-rojo-rgb: 252, 28, 28;
+  --color-verde-rgb: 76, 175, 80;
+}
+
+
+/* Ejemplo de uso
+.elemento {
+  background-color: var(--main-bg-color);
+} */

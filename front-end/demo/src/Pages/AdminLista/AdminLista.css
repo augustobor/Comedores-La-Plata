@@ -1,0 +1,115 @@
+/* Fondo de la vista */
+.fondito-lista-usuarios {
+    background: linear-gradient(135deg, #FAD958, #E6A503, #9B4E00); /* Gradiente amarillo a marrón */
+    /* min-height: 100vh; */
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Contenedor principal */
+  .lista-usuarios-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: var(--color-beige); /* Fondo beige */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Título de la lista */
+  .usuarios-h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-marron); /* Marrón */
+    font-size: 2rem;
+  }
+  
+  /* Lista de usuarios */
+  .usuarios-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+  }
+  
+  .usuario-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid var(--color-marron); /* Borde marrón */
+    border-radius: 5px;
+  }
+  
+  /* Nombre y email */
+  .usuario-nombre {
+    font-size: 1.2rem;
+    color: var(--color-negro); /* Texto negro */
+  }
+  
+  .usuario-email {
+    font-size: 1rem;
+    color: var(--color-marron); /* Marrón claro */
+  }
+  
+ /* Botón de eliminar */
+.usuario-button-eliminar {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* font-weight: bold; */
+    background-color: var(--color-naranja); /* Cambiado a color naranja */
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s ease;
+  }
+  
+  .usuario-button-eliminar:hover {
+    opacity: 0.9; /* Efecto hover similar al de "Agregar Nuevo Admin" */
+  }
+  
+ /* Contenedor del botón */
+.usuarios-button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Espaciado para separar de otros elementos */
+}
+
+/* Estilo del botón de agregar nuevo admin */
+.agregar-admin-button {
+  display: inline-flex; /* Usamos inline-flex para alinear el icono y el texto */
+  align-items: center; /* Alineamos el texto y el icono verticalmente */
+  padding: 12px 25px; /* Un poco más de padding para un botón más grande */
+  border: none;
+  border-radius: 30px; /* Borde más redondeado para hacerlo más suave */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem; /* Tamaño de fuente ajustado */
+  color: white; /* Texto blanco */
+  background-color: var(--color-naranja); /* Fondo naranja */
+  transition: all 0.3s ease; /* Transición para todos los cambios */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Icono + con el texto */
+.agregar-admin-button .icono-plus {
+  font-size: 1.2rem; /* Tamaño más grande para el icono */
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.usuario-data {
+  padding: 0 10px;
+}
+
+.admin-lista-btns {
+  display: flex;
+  gap: 6px;
+}

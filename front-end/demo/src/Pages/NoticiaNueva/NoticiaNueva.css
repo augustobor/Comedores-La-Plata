@@ -1,0 +1,107 @@
+.fondito-noticia-nueva {
+  background: linear-gradient(135deg, #FAD958, #E6A503, #9B4E00); /* Gradiente del amarillo al marrón */
+  min-height: 124vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  height: 100%;
+}
+
+.noticia-container-nueva {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: var(--color-beige); /* Fondo beige */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: default;
+  height: 100%;
+}
+
+.noticia-h2 {
+  text-align: center;
+  color: var(--color-marron); /* Título en marrón */
+}
+
+.noticia-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.noticia-form-group {
+  margin-bottom: 15px;
+}
+
+.noticia-label {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-negro); /* Etiquetas en negro */
+}
+
+.form-part-container {
+  margin: 16px 0;
+}
+
+.noticia-input,
+.noticia-textarea,
+.noticia-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--color-marron); /* Borde marrón */
+  border-radius: 5px;
+  background-color: #fff; /* Fondo blanco */
+  color: var(--color-negro); /* Texto en negro */
+}
+
+.noticia-textarea {
+  height: 100px; /* Altura del textarea */
+  resize: vertical;
+}
+
+.noticia-select {
+  background-color: var(--color-beige); /* Fondo del select */
+}
+
+.noticia-button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.noticia-buttons {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--color-negro); /* Texto en negro */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.noticia-buttons:hover {
+  opacity: 0.9;
+}
+
+.noticia-button {
+  background-color: var(--color-amarillo); /* Botón de guardar en amarillo */
+}
+
+.cancel-button {
+  background-color: var(--color-naranja); /* Botón de cancelar en naranja */
+}
+
+.noticia-prioridad-peligro {
+  color: var(--color-rojo); /* Texto rojo para 'Peligro' */
+}
+
+.noticia-prioridad-medio {
+  color: var(--color-azul); /* Texto azul para 'Medio' */
+}
+
+.noticia-prioridad-tranquilo {
+  color: var(--color-verde); /* Texto verde para 'Tranquilo' */
+}
