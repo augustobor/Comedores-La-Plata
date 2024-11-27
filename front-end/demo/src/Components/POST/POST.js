@@ -27,7 +27,7 @@ const POST = ({ onMessage }) => {
         };
 
         try {
-            const response = await fetch('https://comedores-la-plata.onrender.com:4000/ejemplo/', {
+            const response = await fetch('http://comedores-la-plata.onrender.com:4000/ejemplo/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

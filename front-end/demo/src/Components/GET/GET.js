@@ -12,7 +12,7 @@ const GET = ({ onMessage }) => {
     // Maneja el botón para obtener todos los elementos
     const handleBtnGetAll = async () => {
         try {
-            const response = await fetch('https://comedores-la-plata.onrender.com:4000/ejemplo/', {
+            const response = await fetch('http://comedores-la-plata.onrender.com:4000/ejemplo/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
