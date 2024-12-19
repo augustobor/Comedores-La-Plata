@@ -274,15 +274,38 @@ const AdminPerfil = () => {
                       <td>
                         <div>
                           <p className="td-item">
-                            <span className="sub-td-centro-creado">Creado:</span>{" "}
-                            <span className="sub-td-centro-fecha">{userCentro.fecha_creacion}</span>
+                          <span className="sub-td-centro-creado">Creado el dia:</span>{" "}
+                          <span className="sub-td-centro-fecha">
+                            {new Date(userCentro.fecha_creacion).toLocaleDateString("es-ES", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                              })}{" "}
+                              a las{" "}
+                            {new Date(userCentro.fecha_creacion).toLocaleTimeString("es-ES", {
+                              hour: "2-digit",
+                               minute: "2-digit",
+                            })}
+                          </span>
                           </p>
                           {userCentro.fecha_ultima_edicion && (
                             <div>
                               <p className="centro-details-separador" />
                               <p className="td-item">
-                                <span className="sub-td-centro-creado">Editado:</span>{" "}
-                                <span className="sub-td-centro-fecha">{userCentro.fecha_ultima_edicion}</span>
+                              <span className="sub-td-centro-creado">Editado el dia:</span>{" "}
+                              <span className="sub-td-centro-fecha">
+                                {new Date(userCentro.fecha_ultima_edicion).toLocaleDateString("es-ES", {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                              })}{" "}
+                              a las{" "}
+                            {new Date(userCentro.fecha_ultima_edicion).toLocaleTimeString("es-ES", {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                })}
+                            </span>
+
                               </p>
                               <p className="td-item">
                                 <span className="sub-td-centro-creado">Por:</span>{" "}
@@ -366,15 +389,39 @@ const AdminPerfil = () => {
                       <td>
                         <div>
                           <p className="td-item">
-                            <span className="sub-td-centro-creado">Creado:</span>{" "}
-                            <span className="sub-td-centro-fecha">{userNoticia.fecha_creacion}</span>
+                          <span className="sub-td-centro-creado">Creado el dia:</span>{" "}
+                          <span className="sub-td-centro-fecha">
+                            {new Date(userNoticia.fecha_creacion).toLocaleDateString("es-ES", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })}{" "}
+                            a las{" "}
+                            {new Date(userNoticia.fecha_creacion).toLocaleTimeString("es-ES", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </span>
+
                           </p>
                           {userNoticia.fecha_ultima_edicion && (
                             <div>
                               <p className="centro-details-separador" />
                               <p className="td-item">
-                                <span className="sub-td-centro-creado">Editado:</span>{" "}
-                                <span className="sub-td-centro-fecha">{userNoticia.fecha_ultima_edicion}</span>
+                              <span className="sub-td-centro-creado">Editado el dia:</span>{" "}
+                              <span className="sub-td-centro-fecha">
+                                {new Date(userNoticia.fecha_ultima_edicion).toLocaleDateString("es-ES", {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                })}{" "}
+                                a las{" "}
+                                {new Date(userNoticia.fecha_ultima_edicion).toLocaleTimeString("es-ES", {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                })}
+                              </span>
+
                               </p>
                               <p className="td-item">
                                 <span className="sub-td-centro-creado">Por:</span>{" "}
