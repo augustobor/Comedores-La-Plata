@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const API_URL = process.env.API_URL || 'http://localhost:4000';
+
 const POST = ({ onMessage }) => {
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
@@ -27,7 +29,7 @@ const POST = ({ onMessage }) => {
         };
 
         try {
-            const response = await fetch('http://localhost:4000/usuario/', {
+            const response = await fetch(`${API_URL}/usuario/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

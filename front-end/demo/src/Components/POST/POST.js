@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+const API_URL = process.env.API_URL || 'http://localhost:4000';
+
+
 const POST = ({ onMessage }) => {
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
@@ -27,7 +30,7 @@ const POST = ({ onMessage }) => {
         };
 
         try {
-            const response = await fetch('http://comedores-la-plata.onrender.com:4000/ejemplo/', {
+            const response = await fetch(`${API_URL}/ejemplo/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

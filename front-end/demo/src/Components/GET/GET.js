@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './GET.css';
 
+const API_URL = process.env.API_URL || 'http://localhost:4000';
+
+
 const GET = ({ onMessage }) => {
     const [id, setId] = useState(''); // Inicializar el estado con una cadena vacía
 
@@ -12,7 +15,7 @@ const GET = ({ onMessage }) => {
     // Maneja el botón para obtener todos los elementos
     const handleBtnGetAll = async () => {
         try {
-            const response = await fetch('http://comedores-la-plata.onrender.com:4000/ejemplo/', {
+            const response = await fetch(`${API_URL}/ejemplo/`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,7 +47,7 @@ const GET = ({ onMessage }) => {
     // Maneja el botón para obtener un elemento por ID
     const handleBtnGetById = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/ejemplo/${id}`, {
+            const response = await fetch(`${API_URL}/ejemplo/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

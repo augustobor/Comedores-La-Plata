@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './DELETE.css';
 
+const API_URL = process.env.API_URL || 'http://localhost:4000';
+
+
 const DELETE = ({ onMessage }) => {
     const [id, setId] = useState(''); // Inicializar el estado con una cadena vacía
 
@@ -12,7 +15,7 @@ const DELETE = ({ onMessage }) => {
     // Maneja el botón para obtener todos los elementos
     const handleBtnDelAll = async () => {
         try {
-            const response = await fetch('http://comedores-la-plata.onrender.com:4000/ejemplo/all', {
+            const response = await fetch(`${API_URL}/ejemplo/all`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,7 +36,7 @@ const DELETE = ({ onMessage }) => {
     // Maneja el botón para obtener un elemento por ID
     const handleBtnDelById = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/ejemplo/${id}`, {
+            const response = await fetch(`${API_URL}/ejemplo/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
