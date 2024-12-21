@@ -5,6 +5,9 @@ import { isTokenValid } from '../../Utils/isTokenValid';
 import Modal from '../../Components/modals/modal'
 import Loading_1 from '../../Components/Loadings/Loading_1/Loading_1';
 
+const API_URL = process.env.API_URL || 'http://localhost';
+
+
 // const [fetchedCenterCache, setFetchedCenterCache] = useState(
 //   JSON.parse(localStorage.getItem('fetchedCenterCache')) || {}
 // );
@@ -32,7 +35,7 @@ const Noticias = () => {
   useEffect(() => {
     const fetchAllNoticias = async () => {
       try {
-        const response = await fetch('/noticia/');
+        const response = await fetch(`${API_URL}/noticia/`);
         if (!response.ok) {
           throw new Error('Error al obtener las noticias');
         }
@@ -71,7 +74,7 @@ const Noticias = () => {
   const EliminarNoticiaModal = async (noticiaId) => {
 
     try {
-      const response = await fetch(`/noticia/${noticiaId}`, {
+      const response = await fetch(`${API_URL}/noticia/${noticiaId}`, {
         method: 'DELETE',
         headers: {
           // Incluye aquí los headers necesarios para autenticación, si los tienes
@@ -277,7 +280,7 @@ const Noticias = () => {
                   <button
                     // className="boton-eliminar-noticias"
                     className="add-center-btn noticia-btn"
-                    onClick={() => window.location.href = `/EditarNoticia/${noticia.id}`}
+                    onClick={() => window.location.href = `${API_URL}/EditarNoticia/${noticia.id}`}
                   >
                     Editar Noticia
                   </button>
