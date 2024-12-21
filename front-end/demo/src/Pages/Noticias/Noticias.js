@@ -35,7 +35,10 @@ const Noticias = () => {
   useEffect(() => {
     const fetchAllNoticias = async () => {
       try {
-        const response = await fetch(`${api_url}/noticia/`);
+        const response = await fetch(`${api_url}/noticia/`, {
+          method: 'GET',
+          mode: 'no-cors'
+        });
         if (!response.ok) {
           throw new Error('Error al obtener las noticias');
         }
