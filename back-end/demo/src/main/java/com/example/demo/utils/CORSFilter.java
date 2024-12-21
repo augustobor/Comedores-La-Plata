@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+@WebFilter("/*")
 public class CORSFilter implements Filter {
 
 	/**
@@ -44,7 +44,7 @@ public class CORSFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 
 		// Set the CORS headers to allow all origins and specific HTTP methods
-		response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Origin", "https://comedores-la-plata.vercel.app");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, HEAD, OPTIONS");
 
