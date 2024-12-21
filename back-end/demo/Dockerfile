@@ -23,9 +23,26 @@ WORKDIR /app
 
 COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 
+ARG JWT_SECRET_KEY
+ARG DB_PASSWORD
+ARG DB_USER
+ARG DB_HOST
+ARG SUPER_ADMIN
 
-COPY ./src/main/resources/.env /app/src/main/resources/.env
+ENV JWT_SECRET_KEY=${JWT_SECRET_KEY}
+ENV DB_PASSWORD=${DB_PASSWORD}
+ENV DB_USER=${DB_USER}
+ENV DB_HOST=${DB_HOST}
+ENV SUPER_ADMIN=${SUPER_ADMIN}
 
+RUN mkdir -p /app/src/main/resources && touch /app/src/main/resources/.env
+
+# Crear el archivo .env en el contenedor
+RUN echo "JWT_SECRET_KEY=${JWT_SECRET_KEY}" >> /app/src/main/resources/.env && \
+    echo "DB_PASSWORD=${DB_PASSWORD}" >> /app/src/main/resources/.env && \
+    echo "DB_USER=${DB_USER}" >> /app/src/main/resources/.env && \
+    echo "DB_HOST=${DB_HOST}" >> /app/src/main/resources/.env && \
+    echo "SUPER_ADMIN=${SUPER_ADMIN}" >> /app/src/main/resources/.env
 
 # Exponer el puerto en el que la aplicación Spring Boot escucha
 EXPOSE 4000
