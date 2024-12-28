@@ -28,7 +28,6 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/usuario")
 @RequiredArgsConstructor
 @Validated
-//@CrossOrigin(origins = "http://localhost:3000")  // Permite solicitudes desde React corriendo en localhost:3000
 public class UsuarioController {
 
     private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class.getName());

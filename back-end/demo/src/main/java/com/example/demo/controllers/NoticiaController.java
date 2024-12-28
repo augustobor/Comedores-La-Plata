@@ -22,7 +22,6 @@ import java.util.List;
 @RequestMapping("/noticia")
 @RequiredArgsConstructor
 @Validated
-//@CrossOrigin(origins = "http://localhost:3000")  // Permite solicitudes desde React corriendo en localhost:3000
 public class NoticiaController {
 
     private static final Logger logger = LoggerFactory.getLogger(NoticiaController.class.getName());

@@ -3,6 +3,8 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import io.github.cdimascio.dotenv.Dotenv;
+import com.example.demo.utils.CORSFilter;
+
 
 @SpringBootApplication
 public class DemoApplication {
