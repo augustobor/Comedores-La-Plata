@@ -9,6 +9,8 @@ import { isTokenValid } from '../../Utils/isTokenValid';
 import Modal from '../../Components/modals/modal'
 import PoiMarkers from './poiMarkers/poiMarkers';
 
+const api_url = process.env.REACT_APP_API_URL || 'http://localhost';
+
 const MapaDeCentro = () => {
 
   const [jwt, setJwt] = useLocalState("", "jwt"); // Obtén el token desde el local storage
@@ -44,7 +46,7 @@ const MapaDeCentro = () => {
   useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const response = await fetch('/centro/idsLatLngAndTipo');
+        const response = await fetch(`${api_url}/centro/idsLatLngAndTipo`);
         if (!response.ok) throw new Error('Error al obtener las ubicaciones');
         
         const data = await response.json();
