@@ -28,12 +28,14 @@ ARG DB_PASSWORD
 ARG DB_USER
 ARG DB_HOST
 ARG SUPER_ADMIN
+ARG FRONTEND_URL
 
 ENV JWT_SECRET_KEY=${JWT_SECRET_KEY}
 ENV DB_PASSWORD=${DB_PASSWORD}
 ENV DB_USER=${DB_USER}
 ENV DB_HOST=${DB_HOST}
 ENV SUPER_ADMIN=${SUPER_ADMIN}
+ENV FRONTEND_URL=${FRONTEND_URL}
 
 RUN mkdir -p /app/src/main/resources && touch /app/src/main/resources/.env
 
@@ -42,7 +44,9 @@ RUN echo "JWT_SECRET_KEY=${JWT_SECRET_KEY}" >> /app/src/main/resources/.env && \
     echo "DB_PASSWORD=${DB_PASSWORD}" >> /app/src/main/resources/.env && \
     echo "DB_USER=${DB_USER}" >> /app/src/main/resources/.env && \
     echo "DB_HOST=${DB_HOST}" >> /app/src/main/resources/.env && \
-    echo "SUPER_ADMIN=${SUPER_ADMIN}" >> /app/src/main/resources/.env
+    echo "SUPER_ADMIN=${SUPER_ADMIN}" >> /app/src/main/resources/.env \
+    echo "FRONTEND_URL=${FRONTEND_URL}" >> /app/src/main/resources/.env
+
 
 # Exponer el puerto en el que la aplicación Spring Boot escucha
 EXPOSE 4000
