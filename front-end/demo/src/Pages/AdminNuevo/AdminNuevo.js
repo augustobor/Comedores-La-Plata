@@ -5,6 +5,10 @@ import { useLocalState } from '../../Utils/useLocalStorage';
 import { isTokenValid } from '../../Utils/isTokenValid';
 import { jwtDecode } from 'jwt-decode'; // Importa jwt-decode
 
+
+const API_URL = process.env.API_URL || 'http://localhost:4000';
+
+
 const AdminNuevo = ({ id }) => {
 
   const superAdmin = process.env.REACT_APP_SUPER_ADMIN;
@@ -59,7 +63,7 @@ const AdminNuevo = ({ id }) => {
   function handleSubmit(event) {
     event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
-    const url = editing ? `/usuario/${id}` : "/usuario/";  // Determina si es una actualización o creación
+    const url = editing ? `${API_URL}/usuario/${id}` : `${API_URL}/usuario/`;  // Determina si es una actualización o creación
     const method = editing ? "PUT" : "POST";  // Usa PUT para actualizar y POST para crear
 
     // Crear un objeto FormData
@@ -98,7 +102,7 @@ const AdminNuevo = ({ id }) => {
 
   useEffect(() => {
     if (id) {
-        fetch(`/usuario/edit/${id}`, {
+        fetch(`${API_URL}/usuario/edit/${id}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${jwt}`

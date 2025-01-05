@@ -6,6 +6,8 @@ import Modal from '../../Components/modals/modal'
 import { useLocalState } from '../../Utils/useLocalStorage';
 import { isTokenValid } from '../../Utils/isTokenValid';
 
+const API_URL = process.env.API_URL || 'http://localhost:4000';
+
 const AdminPerfil = () => {
   const [usuario, setUsuario] = useState(null);
   const [jwt, setJwt] = useLocalState("", "jwt"); // Obtén el token desde el local storage
@@ -21,7 +23,7 @@ const AdminPerfil = () => {
       }
 
       try {
-        const response = await fetch('/usuario/self', {
+        const response = await fetch(`${API_URL}/usuario/self`, {
           method: 'GET', // Método de la solicitud
           headers: {
             'Content-Type': 'application/json',
@@ -72,7 +74,7 @@ const AdminPerfil = () => {
       }
   
       try {
-        const response = await fetch('/centro/user', {
+        const response = await fetch(`${API_URL}/centro/user`, {
           method: 'GET', // Método de la solicitud
           headers: {
             'Content-Type': 'application/json',
@@ -102,7 +104,7 @@ const AdminPerfil = () => {
       }
   
       try {
-        const response = await fetch('/noticia/user', {
+        const response = await fetch(`${API_URL}/noticia/user`, {
           method: 'GET', // Método de la solicitud
           headers: {
             'Content-Type': 'application/json',
@@ -176,7 +178,7 @@ const AdminPerfil = () => {
   const EliminarCentroModal = async (centroId) => {
 
     try {
-      const response = await fetch(`/centro/${centroId}`, {
+      const response = await fetch(`${API_URL}/centro/${centroId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${jwt}`
@@ -201,7 +203,7 @@ const AdminPerfil = () => {
   const EliminarNoticiaModal = async (noticiaId) => {
 
     try {
-      const response = await fetch(`/centro/${noticiaId}`, {
+      const response = await fetch(`${API_URL}/centro/${noticiaId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${jwt}`

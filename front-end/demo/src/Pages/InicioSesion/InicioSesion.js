@@ -6,6 +6,8 @@ import { useLocalState } from '../../Utils/useLocalStorage';
 import { isTokenValid } from '../../Utils/isTokenValid';
 import { FaExclamationCircle } from 'react-icons/fa';
 
+const API_URL = process.env.API_URL || 'http://localhost:4000';
+
 const InicioSesion = () => {
 
   const [jwt, setJwt] = useLocalState("", "jwt");
@@ -67,7 +69,7 @@ const InicioSesion = () => {
         "password": password
     };
 
-    fetch("/api/auth/login", {
+    fetch(`${API_URL}/api/auth/login`, {
         headers: {
             "Content-Type": "application/json"
         },
