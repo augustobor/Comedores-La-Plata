@@ -84,6 +84,7 @@ const InicioSesion = () => {
         }
     })
     .then(([body, headers]) => {
+        console.log(headers)
         setJwt(headers.get("authorization"));
         window.location.href = "/AdminPerfil";
     })
