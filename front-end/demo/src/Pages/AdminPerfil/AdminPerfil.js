@@ -82,8 +82,8 @@ const AdminPerfil = () => {
         const response = await fetch(`${API_URL}/centro/user`, {
           method: 'GET', // Método de la solicitud
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${jwt}` // Agrega el token JWT en la cabecera
+            'Content-Type': 'application/json'
+            //'Authorization': `Bearer ${jwt}` // Agrega el token JWT en la cabecera
           }
         });
   
@@ -112,8 +112,8 @@ const AdminPerfil = () => {
         const response = await fetch(`${API_URL}/noticia/user`, {
           method: 'GET', // Método de la solicitud
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${jwt}` // Agrega el token JWT en la cabecera
+            'Content-Type': 'application/json'
+            //'Authorization': `Bearer ${jwt}` // Agrega el token JWT en la cabecera
           }
         });
   
@@ -186,7 +186,7 @@ const AdminPerfil = () => {
       const response = await fetch(`${API_URL}/centro/${centroId}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${jwt}`
+          //'Authorization': `Bearer ${jwt}`
         }
       });
   
@@ -211,7 +211,7 @@ const AdminPerfil = () => {
       const response = await fetch(`${API_URL}/centro/${noticiaId}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${jwt}`
+          //'Authorization': `Bearer ${jwt}`
         }
       });
   
