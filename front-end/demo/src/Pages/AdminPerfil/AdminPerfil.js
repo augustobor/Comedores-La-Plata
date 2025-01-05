@@ -6,7 +6,7 @@ import Modal from '../../Components/modals/modal'
 import { useLocalState } from '../../Utils/useLocalStorage';
 import { isTokenValid } from '../../Utils/isTokenValid';
 
-const API_URL = process.env.API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
 
 const AdminPerfil = () => {
   const [usuario, setUsuario] = useState(null);

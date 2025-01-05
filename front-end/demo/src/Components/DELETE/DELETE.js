@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './DELETE.css';
 
-const API_URL = process.env.API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
 
 
 const DELETE = ({ onMessage }) => {

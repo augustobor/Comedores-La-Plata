@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './GET.css';
 
-const API_URL = process.env.API_URL || 'http://localhost';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost';
 
 
 const GET = ({ onMessage }) => {
