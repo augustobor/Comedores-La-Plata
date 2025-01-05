@@ -18,16 +18,18 @@ const AdminPerfil = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
+      /*
       if (!tokenIsValid) {
         return;
       }
+      */
 
       try {
         const response = await fetch(`${API_URL}/usuario/self`, {
           method: 'GET', // Método de la solicitud
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${jwt}` // Agrega el token JWT en la cabecera
+            'Content-Type': 'application/json'
+            //'Authorization': `Bearer ${jwt}` // Agrega el token JWT en la cabecera
           }
         });
 
@@ -50,6 +52,8 @@ const AdminPerfil = () => {
 
   useEffect(() => {
     const validateToken = async () => {
+      return true
+      /*
       if (jwt) {
         const isValid = await isTokenValid(jwt, () => setJwt(""));
         if(isValid) {
@@ -61,6 +65,7 @@ const AdminPerfil = () => {
         setTokenIsValid(false); // Si no hay JWT, el token es inválido
         navigate("/");
       }
+      */
     };
 
     validateToken(); // Llama a la función para validar el token
