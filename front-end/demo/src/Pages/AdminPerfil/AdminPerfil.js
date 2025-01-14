@@ -6,7 +6,7 @@ import Modal from '../../Components/modals/modal'
 import { useLocalState } from '../../Utils/useLocalStorage';
 import { isTokenValid } from '../../Utils/isTokenValid';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || 'https://comedores-la-plata.onrender.com:4000';
 
 const AdminPerfil = () => {
   const [usuario, setUsuario] = useState(null);
@@ -186,6 +186,7 @@ const AdminPerfil = () => {
       const response = await fetch(`${API_URL}/centro/${centroId}`, {
         method: 'DELETE',
         headers: {
+          'Content-Type': 'application/json'
           //'Authorization': `Bearer ${jwt}`
         }
       });
@@ -211,6 +212,7 @@ const AdminPerfil = () => {
       const response = await fetch(`${API_URL}/centro/${noticiaId}`, {
         method: 'DELETE',
         headers: {
+          'Content-Type': 'application/json'
           //'Authorization': `Bearer ${jwt}`
         }
       });
