@@ -74,10 +74,8 @@ public class SecurityConfiguration {
 	    //Make the below setting as * to allow connection from any hos
 	    //corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:8002"));
 		String frontendUrl = System.getenv("FRONTEND_URL");
-		if (frontendUrl == null || frontendUrl.isEmpty()) {
-			frontendUrl = "http://localhost:3000";
-		}
-	    corsConfiguration.setAllowedOrigins(Arrays.asList(frontendUrl));
+	
+	    corsConfiguration.setAllowedOrigins(Arrays.asList(frontendUrl, "http://localhost:3000"));
 	    corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
 	    corsConfiguration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
 	    corsConfiguration.setAllowCredentials(true);
