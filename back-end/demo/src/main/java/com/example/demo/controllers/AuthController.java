@@ -1,5 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.ApiResponse;
+import com.example.demo.dto.JwtResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -29,6 +33,8 @@ import java.util.Map;
 @RequestMapping("/api/auth")
 public class AuthController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class.getName());
+
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -36,6 +42,8 @@ public class AuthController {
 
     @PostMapping("login")
     public ResponseEntity<?> login(@RequestBody AuthCredentialsRequest request) {
+
+        logger.info("request: " + request.toString());
 
         try {
 
@@ -46,13 +54,19 @@ public class AuthController {
                             )
                     );
             Usuario userModel = (Usuario) authenticate.getPrincipal();
-            //userModel.setPassword(null);
+            userModel.setPassword(null);
+
+            logger.info("user model: " + userModel.toString());
+            String token = jwtUtils.generateToken(userModel);
+            logger.info("token: " + token);
+
+
 
             return ResponseEntity.ok()
-                    .header(HttpHeaders.AUTHORIZATION, jwtUtils.generateToken(userModel))
-                    .body(userModel);
+                    .body(new JwtResponse(token));
 
         } catch (BadCredentialsException ex) {
+            logger.error("Error al guardar el centro: ", ex);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 

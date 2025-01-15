@@ -126,4 +126,12 @@ public class JwtUtils {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
     }
 
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    public void setTimeExpiration(String timeExpiration) {
+        this.timeExpiration = timeExpiration;
+    }
+
 }
