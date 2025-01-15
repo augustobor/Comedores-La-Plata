@@ -88,7 +88,8 @@ const InicioSesion = () => {
           setJwt(headers.get("authorization"));
           window.location.href = "/AdminPerfil";
         } else {
-          console.log(headers)
+          console.log(headers);
+          console.log(body);
         }
     })
     .catch((error) => {
