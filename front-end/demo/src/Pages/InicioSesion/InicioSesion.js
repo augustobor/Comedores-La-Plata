@@ -86,7 +86,11 @@ const InicioSesion = () => {
     .then(([body, headers]) => {
         console.log(headers)
         setJwt(headers.get("authorization"));
-        window.location.href = "/AdminPerfil";
+        if(jwt) {
+          window.location.href = "/AdminPerfil";
+        } else {
+          console.log("jwt: ", jwt);
+        }
     })
     .catch((error) => {
         console.error("Login failed:", error); // Imprime el error en la consola
