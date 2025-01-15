@@ -46,7 +46,7 @@ public class AuthController {
                             )
                     );
             Usuario userModel = (Usuario) authenticate.getPrincipal();
-            userModel.setPassword(null);
+            //userModel.setPassword(null);
 
             return ResponseEntity.ok()
                     .header(HttpHeaders.AUTHORIZATION, jwtUtils.generateToken(userModel))
