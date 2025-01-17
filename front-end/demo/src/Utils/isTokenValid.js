@@ -1,8 +1,11 @@
 async function isTokenValid(jwt, removeTokenFunction) {
+
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+    
     if (!jwt) return false;
 
     try {
-        const response = await fetch(`/api/auth/validate?token=${jwt}`, {
+        const response = await fetch(`${API_URL}/api/auth/validate?token=${jwt}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

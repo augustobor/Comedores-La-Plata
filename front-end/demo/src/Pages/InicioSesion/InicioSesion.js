@@ -83,12 +83,11 @@ const InicioSesion = () => {
             return Promise.reject("Invalid login attempt");
         }
     })
-    .then(([body, headers]) => {
-        if(headers.get("authorization")) {
-          setJwt(headers.get("authorization"));
+    .then(([body]) => {
+        if(body) {
+          setJwt(body.token);
           window.location.href = "/AdminPerfil";
         } else {
-          console.log(headers);
           console.log(body);
         }
     })

@@ -99,12 +99,6 @@ public class UsuarioService {
         if (usuarioRepo.existsByUsername(username)) errorMessage.append("El nombre de usuario ya está registrado. ");
         if (errorMessage.length() > 0) throw new IllegalArgumentException(errorMessage.toString().trim());
 
-        logger.info("username: {}", username);
-        logger.info("password: {}", password);
-        logger.info("nombre: {}", nombre);
-        logger.info("apellido: {}", apellido);
-        logger.info("mail: {}", mail);
-
         Usuario newUsuario = new Usuario();
 
         newUsuario.setNombre(nombre);
@@ -134,13 +128,6 @@ public class UsuarioService {
         if (usuarioRepo.existsByUsernameAndIdNot(username, id)) errorMessage.append("El nombre de usuario ya está registrado. ");
         logger.info("errorMessage: {}", errorMessage);
         if (errorMessage.length() > 0) throw new IllegalArgumentException(errorMessage.toString().trim());
-
-//        logger.info("existing usuario password: {}", existingUsuario.getPassword());
-//        logger.info("username: {}", username);
-//        logger.info("password: {}", password);
-//        logger.info("nombre: {}", nombre);
-//        logger.info("apellido: {}", apellido);
-//        logger.info("mail: {}", mail);
 
         existingUsuario.setNombre(nombre);
         existingUsuario.setApellido(apellido);

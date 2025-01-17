@@ -94,7 +94,7 @@ const MapaDeCentro = () => {
       }
 
       try {
-        const response = await fetch(`/centro/${poiId}`);
+        const response = await fetch(`${api_url}/centro/${poiId}`);
         if (response.status === 404) {
           console.error(`El centro con ID ${poiId} no existe`);
           setSelectedPlace(null); // Clear selection if not found
@@ -184,7 +184,7 @@ const MapaDeCentro = () => {
   const EliminarCentroModal = async (centroId) => {
 
     try {
-      const response = await fetch(`/centro/${centroId}`, {
+      const response = await fetch(`${api_url}/centro/${centroId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${jwt}`

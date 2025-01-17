@@ -68,7 +68,8 @@ public class CentroController {
 
 
     @PostMapping(value = "/", consumes = "multipart/form-data")
-    public ResponseEntity<Centro> saveCentro(@RequestPart("nombre") String nombre,
+    public ResponseEntity<Centro> saveCentro(@RequestPart("nombre") Long id,
+                                             @RequestPart("nombre") String nombre,
                                              @RequestPart("descripcion") String descripcion,
                                              @RequestPart("tipoComedor") String tipoComedor,
                                              @RequestPart("formattedAddress") String formattedAddress,
@@ -84,6 +85,7 @@ public class CentroController {
         try {
             // Lógica para guardar el centro
             Centro newCentro = centroService.saveCentro(
+                    id,
                     nombre,
                     descripcion,
                     tipoComedor,

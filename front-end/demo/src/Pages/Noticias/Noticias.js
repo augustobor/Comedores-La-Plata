@@ -5,7 +5,7 @@ import { isTokenValid } from '../../Utils/isTokenValid';
 import Modal from '../../Components/modals/modal'
 import Loading_1 from '../../Components/Loadings/Loading_1/Loading_1';
 
-const api_url = process.env.REACT_APP_API_URL || 'http://localhost';
+const api_url = process.env.REACT_APP_API_URL || 'http://localhost:4000';
 
 
 // const [fetchedCenterCache, setFetchedCenterCache] = useState(
@@ -280,7 +280,7 @@ const Noticias = () => {
                   <button
                     // className="boton-eliminar-noticias"
                     className="add-center-btn noticia-btn"
-                    onClick={() => window.location.href = `${api_url}/EditarNoticia/${noticia.id}`}
+                    onClick={() => window.location.href = `/EditarNoticia/${noticia.id}`}
                   >
                     Editar Noticia
                   </button>

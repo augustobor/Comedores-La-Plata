@@ -7,6 +7,8 @@ import CasPostFormPart2 from '../../Components/Centros/post/Formulario/PostFormP
 import { FaExclamationCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+
 const NoticiaNueva = ({ id }) => {
 
   const [titulo, setTitulo] = useState('');
@@ -52,7 +54,7 @@ const NoticiaNueva = ({ id }) => {
   useEffect(() => {
     if (id) {
         
-        fetch(`/noticia/${id}`, {
+        fetch(`${API_URL}/noticia/${id}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${jwt}`
@@ -102,7 +104,8 @@ const NoticiaNueva = ({ id }) => {
         setErrorsForm2(newErrorsForm2);
 
         // Verificar la prioridad
-        if (prioridad === "Seleccione...") {
+        if (prioridad == "Seleccione...") {
+            console.log("Prioridad: ", prioridad);
             localErrors["prioridad"] = "Seleccione un tipo de noticia."; // Asignar error para 'prioridad'
             valid = false;
         } else {
@@ -145,7 +148,7 @@ const NoticiaNueva = ({ id }) => {
             }
         }
 
-        const url = editing ? `/noticia/${id}` : "/noticia/";
+        const url = editing ? `${API_URL}/noticia/${id}` : `${API_URL}/noticia/`;
         const method = editing ? "PUT" : "POST";
 
         // if(id) formData.append("id", id);

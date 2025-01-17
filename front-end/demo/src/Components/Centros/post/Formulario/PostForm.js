@@ -10,6 +10,8 @@ import PostFormPart2 from "./PostFormParts/part2/PostFormPart2";
 import PostFormPart3 from "./PostFormParts/part3/PostFormPart3";
 import { FaExclamationCircle } from "react-icons/fa";
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+
 const PostForm = ({ id }) => {
 
     const navigate = useNavigate();
@@ -40,7 +42,7 @@ const PostForm = ({ id }) => {
     useEffect(() => {
     
         if (id) {
-            fetch(`/centro/${id}`, {
+            fetch(`${API_URL}/centro/${id}`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${jwt}`
@@ -237,6 +239,7 @@ const PostForm = ({ id }) => {
         const formData = new FormData();  // Usar FormData para enviar archivos
     
         // Agregar los datos del formulario al FormData
+        formData.append("id", id);
         formData.append("nombre", formData1.nombre);
         formData.append("descripcion", formData1.descripcion);
         formData.append("tipoComedor", formData1.tipoComedor);
@@ -267,7 +270,7 @@ const PostForm = ({ id }) => {
     
         // Determinar el método y la URL
         const method = id ? "PUT" : "POST";
-        const url = id ? `/centro/${id}` : `/centro/`;
+        const url = id ? `${API_URL}/centro/${id}` : `${API_URL}/centro/`;
     
         if (id) formData.append("id", id);
     

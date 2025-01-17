@@ -124,7 +124,7 @@ public class CentroService {
 
         // Verificar si ya existe un centro con la misma dirección, latitud y longitud
         Optional<Centro> existingCentroWithAddressLatAndLong = centroRepo.findByFormattedAddressAndLatitudAndLongitud(formattedAddress, latitud, longitud);
-        if (existingCentroWithAddressLatAndLong.isPresent()) {
+        if (existingCentroWithAddressLatAndLong.isPresent() && (existingCentroWithAddressLatAndLong.get().getId() != id)) {
             throw new RuntimeException("Ya existe un centro con la misma dirección y coordenadas.");
         }
 
@@ -195,6 +195,7 @@ public class CentroService {
 
     @Transactional
     public Centro saveCentro(
+            Long id,
             String nombre,
             String descripcion,
             String tipoComedor,
@@ -209,6 +210,7 @@ public class CentroService {
 
         // Verificar si ya existe un centro con la misma dirección, latitud y longitud
         Optional<Centro> existingCentro = centroRepo.findByFormattedAddressAndLatitudAndLongitud(formattedAddress, latitud, longitud);
+
         if (existingCentro.isPresent()) {
             throw new RuntimeException("Ya existe un centro con la misma dirección y coordenadas.");
         }

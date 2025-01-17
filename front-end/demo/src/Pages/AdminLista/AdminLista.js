@@ -6,6 +6,8 @@ import { useLocalState } from '../../Utils/useLocalStorage';
 import { jwtDecode } from 'jwt-decode'; // Importa jwt-decode
 import Modal from '../../Components/modals/modal';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+
 const AdminLista = () => {
 
   const superAdmin = process.env.REACT_APP_SUPER_ADMIN;
@@ -42,7 +44,7 @@ const AdminLista = () => {
   // Obtener los usuarios
   useEffect(() => {
     if (userUsername !== null) { // Solo hacer el fetch si el ID del usuario está disponible
-      fetch(`/usuario/allExceptUsername/${userUsername}`)
+      fetch(`${API_URL}/usuario/allExceptUsername/${userUsername}`)
         .then((response) => response.json()) // Parsear la respuesta JSON
         .then((data) => {
           setUsuarios(data); // Guardar los datos en el estado
@@ -57,7 +59,7 @@ const AdminLista = () => {
   const EliminarUsuarioModal = async () => {
     if (usuarioSeleccionado) {
       try {
-        const response = await fetch(`/usuario/${usuarioSeleccionado.id}`, {
+        const response = await fetch(`${API_URL}/usuario/${usuarioSeleccionado.id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${jwt}`

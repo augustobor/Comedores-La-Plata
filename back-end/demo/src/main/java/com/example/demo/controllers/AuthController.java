@@ -43,8 +43,6 @@ public class AuthController {
     @PostMapping("login")
     public ResponseEntity<?> login(@RequestBody AuthCredentialsRequest request) {
 
-        logger.info("request: " + request.toString());
-
         try {
 
             Authentication authenticate = authenticationManager
@@ -56,9 +54,7 @@ public class AuthController {
             Usuario userModel = (Usuario) authenticate.getPrincipal();
             userModel.setPassword(null);
 
-            logger.info("user model: " + userModel.toString());
             String token = jwtUtils.generateToken(userModel);
-            logger.info("token: " + token);
 
 
 
@@ -77,13 +73,17 @@ public class AuthController {
         try {
             Boolean isValidToken = jwtUtils.validateToken(token, user);
             if (isValidToken) {
+                logger.info("All good");
                 return ResponseEntity.ok(Map.of("valid", true));
             } else {
+                logger.info("Unauthorized.");
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("valid", false));
             }
         } catch (ExpiredJwtException e) {
+            logger.error("Error (Expired): ", e);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("valid", false, "error", "Token expired"));
         } catch (JwtException e) {
+            logger.error("Error (Esception): ", e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("valid", false, "error", "Invalid token"));
         }
     }
