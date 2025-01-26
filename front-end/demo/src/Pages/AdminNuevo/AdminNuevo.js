@@ -11,7 +11,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
 
 const AdminNuevo = ({ id }) => {
 
-  const superAdmin = process.env.REACT_APP_SUPER_ADMIN;
+  // const superAdmin = process.env.REACT_APP_SUPER_ADMIN;
 
   const navigate = useNavigate();
 
@@ -26,8 +26,21 @@ const AdminNuevo = ({ id }) => {
       if(isValid) {
         setTokenIsValid(isValid); // Actualiza el estado con la validación
         const decodedToken = jwtDecode(jwt); // Decodificar el JWT para obtener el ID
+        // console.log(decodedToken);
+
         const username = decodedToken.sub;
-        if(username !== superAdmin)  navigate("/");
+        // Acceder a authorities, que es un array de objetos
+        const authorities = decodedToken.authorities || [];
+  
+        // console.log("Authorities: ", authorities);
+  
+        // Verifica si el authorities contiene un objeto con 'authority' igual a 'SUPER_ADMIN'
+        const isSuperAdmin = authorities.some(auth => auth.authority === 'SUPER_ADMIN');
+  
+        if (!isSuperAdmin) {
+          navigate("/");
+        }
+
       } else {
         navigate("/InicioSesion");
       }
@@ -36,10 +49,6 @@ const AdminNuevo = ({ id }) => {
       navigate("/");
     }
   };
-
-  useEffect(() => {
-    validateToken(); // Llama a la función para validar el token
-  }, [jwt]); // Solo se ejecuta cuando el JWT cambia
 
   useEffect(() => {
     

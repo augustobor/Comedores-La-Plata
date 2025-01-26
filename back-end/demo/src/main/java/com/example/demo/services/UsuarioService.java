@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.example.demo.controllers.CentroController;
 import com.example.demo.controllers.UsuarioController;
 import com.example.demo.models.Centro;
+import com.example.demo.models.Noticia;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,7 +72,40 @@ public class UsuarioService {
 
     //hacer manejo de errores y de parametros y esas cosas agus del futuro vos pdoes
 
+    public void findAndPrintUsuarioDetails(Long id) {
+        // Buscar el usuario por ID
+        Usuario usuario = usuarioRepo.findById(id).orElse(null);
+
+        if (usuario != null) {
+            // Imprimir detalles del usuario
+            log.info("Usuario encontrado: {}", usuario);
+
+            // Imprimir noticias
+            if (usuario.getNovedades() != null && !usuario.getNovedades().isEmpty()) {
+                log.info("Noticias del usuario:");
+                for (Noticia noticia : usuario.getNovedades()) {
+                    log.info("Noticia: {}", noticia);
+                }
+            } else {
+                log.info("No hay noticias para este usuario.");
+            }
+
+            // Imprimir centros
+            if (usuario.getCentros() != null && !usuario.getCentros().isEmpty()) {
+                log.info("Centros del usuario:");
+                for (Centro centro : usuario.getCentros()) {
+                    log.info("Centro: {}", centro);
+                }
+            } else {
+                log.info("No hay centros para este usuario.");
+            }
+        } else {
+            log.info("Usuario con ID {} no encontrado.", id);
+        }
+    }
+
     public void deleteUsuarioById (Long id) {
+        findAndPrintUsuarioDetails(id);
         usuarioRepo.deleteById(id);
     }
 

@@ -10,7 +10,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
 
 const AdminLista = () => {
 
-  const superAdmin = process.env.REACT_APP_SUPER_ADMIN;
+  // const superAdmin = process.env.REACT_APP_SUPER_ADMIN;
 
   // Estado para almacenar los usuarios
   const [usuarios, setUsuarios] = useState([]);
@@ -19,15 +19,33 @@ const AdminLista = () => {
   const [tokenIsValid, setTokenIsValid] = useState(false); // Estado para almacenar la validación del token
   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null); // Estado para almacenar el usuario seleccionado
   const navigate = useNavigate();
+  const [superAdmin, setSuperAdmin] = useState(null);
 
   // Validación del token
   const validateToken = async () => {
     if (jwt) {
       const isValid = await isTokenValid(jwt, () => setJwt(""));
-      if(isValid) {
+      if (isValid) {
         setTokenIsValid(isValid); // Actualiza el estado con la validación
         const decodedToken = jwtDecode(jwt); // Decodificar el JWT para obtener el ID
+        // console.log(decodedToken);
         setUserUsername(decodedToken.sub); // Asignar el ID del usuario
+  
+        // Acceder a authorities, que es un array de objetos
+        const authorities = decodedToken.authorities || [];
+  
+        // console.log("Authorities: ", authorities);
+  
+        // Verifica si el authorities contiene un objeto con 'authority' igual a 'SUPER_ADMIN'
+        const isSuperAdmin = authorities.some(auth => auth.authority === 'SUPER_ADMIN');
+  
+        if (isSuperAdmin) {
+          setSuperAdmin(true);
+          console.log("El usuario es super admin.");
+        } else {
+          setSuperAdmin(false);
+          console.log("El usuario no es super admin.");
+        }
       } else {
         navigate("/InicioSesion");
       }
@@ -36,15 +54,19 @@ const AdminLista = () => {
       navigate("/");
     }
   };
+  
 
   useEffect(() => {
-    validateToken(); // Llama a la función para validar el token
+    if (jwt) {
+      validateToken(); // Llama a la función para validar el token
+    }
   }, [jwt]); // Solo se ejecuta cuando el JWT cambia
 
   // Obtener los usuarios
   useEffect(() => {
     if (userUsername !== null) { // Solo hacer el fetch si el ID del usuario está disponible
-      fetch(`${API_URL}/usuario/allExceptUsername/${userUsername}`)
+      // fetch(`${API_URL}/usuario/allExceptUsername/${userUsername}`)
+      fetch(`${API_URL}/usuario/all`)
         .then((response) => response.json()) // Parsear la respuesta JSON
         .then((data) => {
           setUsuarios(data); // Guardar los datos en el estado
@@ -102,7 +124,7 @@ const AdminLista = () => {
               <span className="usuario-nombre usuario-data">{usuario.username}</span>
               <p className="centro-details-separador"/>
               <span className="usuario-email usuario-data">{usuario.mail}</span>
-              {userUsername && jwt && userUsername === superAdmin &&
+              {userUsername && jwt && superAdmin &&
                 <div className='admin-lista-btns'>
                   <button 
                     className="usuario-button-eliminar" 
@@ -138,7 +160,7 @@ const AdminLista = () => {
             </li>
           ))}
         </ul>
-        {userUsername && jwt && userUsername === superAdmin &&
+        {userUsername && jwt && superAdmin &&
           <div className="usuarios-button-group">
             <Link to="/AdminNuevo" className="usuario-buttons agregar-admin-button">
               Nuevo Admin

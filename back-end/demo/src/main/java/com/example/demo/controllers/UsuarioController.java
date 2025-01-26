@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.dto.ApiResponse;
+import com.example.demo.models.TipoRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,8 +33,8 @@ public class UsuarioController {
 
     private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class.getName());
 
-    @Value("${super.admin}")
-    private String superAdmin;
+//    @Value("${super.admin}")
+//    private String superAdmin;
 
     @Autowired
     private final UsuarioService usuariosService;
@@ -81,10 +82,17 @@ public class UsuarioController {
                                                @RequestPart("apellido") String apellido,
                                                @RequestPart("mail") String mail)
     {
-        if (!user.getUsername().equals(superAdmin)) {
+//        if (!user.getUsername().equals(superAdmin)) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+//                    .body(new ApiResponse<>("No autorizado", null));
+//        }
+
+        if (user.getAuthorities().stream()
+                .noneMatch(auth -> auth.getAuthority().equals(TipoRoles.SUPER_ADMIN.name()))) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new ApiResponse<>("No autorizado", null));
         }
+
 
         try {
             Usuario newUsuario = usuariosService.saveUsuario(nombre, apellido, mail, username, password);
@@ -114,7 +122,13 @@ public class UsuarioController {
                                                             @RequestPart("apellido") String apellido,
                                                             @RequestPart("mail") String mail)
     {
-        if (!user.getUsername().equals(superAdmin)) {
+//        if (!user.getUsername().equals(superAdmin)) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+//                    .body(new ApiResponse<>("No autorizado", null));
+//        }
+
+        if (user.getAuthorities().stream()
+                .noneMatch(auth -> auth.getAuthority().equals(TipoRoles.SUPER_ADMIN.name()))) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new ApiResponse<>("No autorizado", null));
         }
@@ -140,7 +154,13 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUsuarioById(@PathVariable Long id, @AuthenticationPrincipal Usuario user)
     {
-        if (!user.getUsername().equals(superAdmin)) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No sos Seba");
+//        if (!user.getUsername().equals(superAdmin)) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No sos Seba");
+
+        if (user.getAuthorities().stream()
+                .noneMatch(auth -> auth.getAuthority().equals(TipoRoles.SUPER_ADMIN.name()))) {
+           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
         usuariosService.deleteUsuarioById(id);
         return ResponseEntity.ok().body("Se borró el Usuario con id {} exitosamente");
     }
