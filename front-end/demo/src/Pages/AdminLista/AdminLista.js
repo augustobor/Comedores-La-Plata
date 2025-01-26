@@ -28,13 +28,13 @@ const AdminLista = () => {
       if (isValid) {
         setTokenIsValid(isValid); // Actualiza el estado con la validación
         const decodedToken = jwtDecode(jwt); // Decodificar el JWT para obtener el ID
-        // console.log(decodedToken);
+        console.log(decodedToken);
         setUserUsername(decodedToken.sub); // Asignar el ID del usuario
   
         // Acceder a authorities, que es un array de objetos
         const authorities = decodedToken.authorities || [];
   
-        // console.log("Authorities: ", authorities);
+        console.log("Authorities: ", authorities);
   
         // Verifica si el authorities contiene un objeto con 'authority' igual a 'SUPER_ADMIN'
         const isSuperAdmin = authorities.some(auth => auth.authority === 'SUPER_ADMIN');
@@ -87,18 +87,22 @@ const AdminLista = () => {
             'Authorization': `Bearer ${jwt}`
           }
         });
-    
+   
         if (!response.ok) {
           cerrarEliminarUsuarioModal(); // Cierra el modal después de la eliminación
-          throw new Error('Error al eliminar el usuario');
+          const errorMessage = await response.text(); // Obtener el mensaje de error del backend
+          throw new Error(errorMessage); // Lanzar el mensaje de error recibido
         }
+   
         const updatedUsuarios = usuarios.filter(usuario => usuario.id !== usuarioSeleccionado.id);
         setUsuarios(updatedUsuarios);
         cerrarEliminarUsuarioModal(); // Cierra el modal después de la eliminación
       } catch (error) {
         console.error('Error al eliminar el usuario:', error.message);
+        alert(error.message); // Mostrar el mensaje de error al usuario
       }
     }
+   
   };
 
   // Abrir modal

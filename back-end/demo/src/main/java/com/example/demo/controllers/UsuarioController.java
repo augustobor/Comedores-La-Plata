@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.example.demo.dto.ApiResponse;
 import com.example.demo.models.TipoRoles;
+import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -152,17 +153,22 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUsuarioById(@PathVariable Long id, @AuthenticationPrincipal Usuario user)
-    {
-//        if (!user.getUsername().equals(superAdmin)) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No sos Seba");
-
+    public ResponseEntity<String> deleteUsuarioById(@PathVariable Long id, @AuthenticationPrincipal Usuario user) {
+        // Verificación de permisos
         if (user.getAuthorities().stream()
                 .noneMatch(auth -> auth.getAuthority().equals(TipoRoles.SUPER_ADMIN.name()))) {
-           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tienes permisos para eliminar usuarios.");
         }
 
-        usuariosService.deleteUsuarioById(id);
-        return ResponseEntity.ok().body("Se borró el Usuario con id {} exitosamente");
+        try {
+            usuariosService.deleteUsuarioById(id);
+            return ResponseEntity.ok().body(String.format("Se borró el Usuario con id %d exitosamente", id));
+        } catch (ConstraintViolationException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No se puede borrar a un usuario que tiene un centro y/o noticia.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No se puede borrar a un usuario con rol SUPER_ADMIN.");
+        }
     }
+
 
 }

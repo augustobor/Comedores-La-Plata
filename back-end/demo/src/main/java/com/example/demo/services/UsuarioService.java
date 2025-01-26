@@ -6,15 +6,16 @@ import java.util.stream.Collectors;
 
 import com.example.demo.controllers.CentroController;
 import com.example.demo.controllers.UsuarioController;
-import com.example.demo.models.Centro;
-import com.example.demo.models.Noticia;
+import com.example.demo.models.*;
+import com.example.demo.repositories.AuthorityRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.Usuario;
 import com.example.demo.repositories.UsuarioRepo;
 
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,9 @@ public class UsuarioService {
 
     @Autowired
     private final UsuarioRepo usuarioRepo;
+
+    @Autowired
+    private final AuthorityRepo authorityRepo;
 
     public List<Usuario> getAllUsuarios(){
         return usuarioRepo.findAll();
@@ -70,43 +74,19 @@ public class UsuarioService {
         return updatedUsuario;
     }
 
-    //hacer manejo de errores y de parametros y esas cosas agus del futuro vos pdoes
-
-    public void findAndPrintUsuarioDetails(Long id) {
-        // Buscar el usuario por ID
+    public void deleteUsuarioById (Long id) {
+//        findAndPrintUsuarioDetails(id);
         Usuario usuario = usuarioRepo.findById(id).orElse(null);
 
         if (usuario != null) {
-            // Imprimir detalles del usuario
-            log.info("Usuario encontrado: {}", usuario);
-
-            // Imprimir noticias
-            if (usuario.getNovedades() != null && !usuario.getNovedades().isEmpty()) {
-                log.info("Noticias del usuario:");
-                for (Noticia noticia : usuario.getNovedades()) {
-                    log.info("Noticia: {}", noticia);
-                }
+            if (usuario.getAuthorities().stream()
+                    .noneMatch(auth -> auth.getAuthority().equals(TipoRoles.SUPER_ADMIN.name()))) {
+                authorityRepo.deleteAll((Iterable<? extends Authority>) usuario.getAuthorities());
+                usuarioRepo.deleteById(id);
             } else {
-                log.info("No hay noticias para este usuario.");
+                throw new IllegalArgumentException("No se puede borrar a un usuario super admin.");
             }
-
-            // Imprimir centros
-            if (usuario.getCentros() != null && !usuario.getCentros().isEmpty()) {
-                log.info("Centros del usuario:");
-                for (Centro centro : usuario.getCentros()) {
-                    log.info("Centro: {}", centro);
-                }
-            } else {
-                log.info("No hay centros para este usuario.");
-            }
-        } else {
-            log.info("Usuario con ID {} no encontrado.", id);
         }
-    }
-
-    public void deleteUsuarioById (Long id) {
-        findAndPrintUsuarioDetails(id);
-        usuarioRepo.deleteById(id);
     }
 
     public void deleteAllUsuarios() {
