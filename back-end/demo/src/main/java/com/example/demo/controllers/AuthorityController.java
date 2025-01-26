@@ -18,10 +18,10 @@ public class AuthorityController {
         this.authorityService = authorityService;
     }
 
-    @PostMapping("/add-admin")
-    public ResponseEntity<String> addAdmin(@RequestBody Usuario usuario) {
-        authorityService.addAdminAuthorityToUser(usuario);
-        return ResponseEntity.ok("Authority ADMIN agregada correctamente");
-    }
+//    @PostMapping("/add-admin")
+//    public ResponseEntity<String> addAdmin(@RequestBody Usuario usuario) {
+//        authorityService.addAdminAuthorityToUser(usuario);
+//        return ResponseEntity.ok("Authority ADMIN agregada correctamente");
+//    }
 }
 
